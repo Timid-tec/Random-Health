@@ -14,4 +14,4 @@
 
 | Version | Change-Log          |
 | ------- | ------------------ |
-| 4.2.0   | Added to github |
+| 4.2.0   | Added to GitHub |
