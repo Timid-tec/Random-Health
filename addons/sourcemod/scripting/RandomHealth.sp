@@ -3,7 +3,7 @@
 #include <timid>
 #include <debug>
 
-#define prefix "\x10[BRUTALCI]"
+#define prefix "[SM]"
 
 ConVar gCvRandomHealth;
 ConVar gCvEnabled;
