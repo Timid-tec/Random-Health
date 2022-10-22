@@ -6,15 +6,11 @@
 #define prefix "\x10[BRUTALCI]"
 
 ConVar gCvRandomHealth;
-ConVar gCvEnabled;
 
 int gHealth;
 int gRandomHealth;
 int gRand;
 int clFlag[MAXPLAYERS + 1];
-
-
-bool gEnabled;
 
 #pragma semicolon 1
 
@@ -32,17 +28,12 @@ public OnPluginStart()
 	/* Hook events */
 	HookEvent("player_spawn", Event_PlayerSpawn);
 	
-	CreateConVar("sm_random-health_version", PLUGIN_VERSION, "Spawn Protection Version", FCVAR_SPONLY | FCVAR_REPLICATED);
-	gCvRandomHealth = CreateConVar("sm_health_value", "11", "Set how much random health is given to (i) player. (def, 14)");
+	CreateConVar("sm_random_health_version", PLUGIN_VERSION, "Random Health Version", FCVAR_SPONLY | FCVAR_REPLICATED);
+	gCvRandomHealth = CreateConVar("sm_randomhealth_rhealth", "5", "Sets how much random health is given to admins/vips (def 5)");
 	gCvRandomHealth.AddChangeHook(OnCVarChanged);
-	gCvEnabled = CreateConVar("sm_health_enabled", "1", "Enables the random health chance. (def, 1)");
-	gCvEnabled.AddChangeHook(OnCVarChanged);
 	
-	/* Int Values */
-	gRandomHealth = gCvEnabled.IntValue;
 	
-	/* Bool Values */
-	gEnabled = gCvEnabled.BoolValue;
+	gRandomHealth = gCvRandomHealth.IntValue;
 	
 	/* Debug Log */
 	BuildLogFilePath();
@@ -53,10 +44,6 @@ public void OnCVarChanged(ConVar convar, char[] oldValue, char[] newValue)
 	if (convar == gCvRandomHealth)
 	{
 		gRandomHealth = gCvRandomHealth.IntValue;
-	}
-	if (convar == gCvEnabled)
-	{
-		gEnabled = gCvEnabled.BoolValue;
 	}
 }
 
@@ -73,10 +60,10 @@ public Action Event_PlayerSpawn(Handle event, char[] name, bool dontBroadcast)
 	LogDebug(false, "RandomChance - (%i)", gRand);
 	#endif
 	
-	if (gRand < 10 && checkClFlag(client) && gEnabled)
+	if (gRand < 10 && checkClFlag(client))
 	{
 		SetPlayerHealth(client);
-		PrintToChatAll(" %s \x02%N \x04%got lucky and receved \x02%i \x04extra health.", prefix, client, gRandomHealth);
+		PrintToChatAll(" %s \x04%N got lucky and receved %i extra health.", prefix, client, gRandomHealth);
 	}
 	
 	return Plugin_Continue;
