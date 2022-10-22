@@ -3,7 +3,7 @@
 #include <timid>
 #include <debug>
 
-#define prefix "[SM]"
+#define prefix "[Random-Health]"
 
 ConVar gCvRandomHealth;
 ConVar gCvEnabled;
