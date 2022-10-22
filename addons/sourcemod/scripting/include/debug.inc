@@ -5,14 +5,14 @@
 
 /* Change this to enable debug */
 #define _DEBUG 											0 // 1 = Small Debug, 2 = Minimum, 3 = Full Debug
-#define _DEBUG_MODE										0 // 1 = Log to File, 2 = Log to Game Logs, 3 = Print to Chat, 4 = Print to Console
+#define _DEBUG_MODE										1 // 1 = Log to File, 2 = Log to Game Logs, 3 = Print to Chat, 4 = Print to Console
 
 #define LOG_FOLDER										"logs"
 #define LOG_PREFIX										"debug_"
 #define LOG_EXT											"log"
 
 /* Log File */
-char debug_LogFile[PLATFORM_MAX_PATH];
+char Debug_LogFile[PLATFORM_MAX_PATH];
 
 #if _DEBUG
 ConVar hCvarLogDebug = null;
@@ -31,16 +31,16 @@ void BuildLogFilePath() // Build Log File System Path
 	FormatTime(cTime, sizeof(cTime), "%Y%m%d");
 	
 	char sLogFile[PLATFORM_MAX_PATH];
-	sLogFile = debug_LogFile;
+	sLogFile = Debug_LogFile;
 	
-	BuildPath(Path_SM, debug_LogFile, sizeof(debug_LogFile), "%s/%s%s.%s", LOG_FOLDER, LOG_PREFIX, cTime, LOG_EXT);
+	BuildPath(Path_SM, Debug_LogFile, sizeof(Debug_LogFile), "%s/%s%s.%s", LOG_FOLDER, LOG_PREFIX, cTime, LOG_EXT);
 	
 	#if _DEBUG
-	LogDebug(false, "BuildLogFilePath - AFK Log Path: %s", debug_LogFile);
+	LogDebug(false, "BuildLogFilePath - AFK Log Path: %s", Debug_LogFile);
 	#endif
 	
-	if (!StrEqual(debug_LogFile, sLogFile))
-		LogAction(0, -1, "[Debug] Log File: %s", debug_LogFile);
+	if (!StrEqual(Debug_LogFile, sLogFile))
+		LogAction(0, -1, "[Debug] Log File: %s", Debug_LogFile);
 }
 
 /* Debug Functions */
