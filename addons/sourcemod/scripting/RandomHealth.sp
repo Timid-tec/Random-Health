@@ -110,4 +110,4 @@ stock bool checkClFlag(int client)
 		}
 	}
 	return true;
-} 
+}
