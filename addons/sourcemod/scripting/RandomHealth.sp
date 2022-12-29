@@ -32,7 +32,7 @@ public OnPluginStart()
 	/* Hook events */
 	HookEvent("player_spawn", Event_PlayerSpawn);
 	
-	CreateConVar("sm_random-health_version", PLUGIN_VERSION, "Spawn Protection Version", FCVAR_SPONLY | FCVAR_REPLICATED);
+	CreateConVar("sm_random_health_version", PLUGIN_VERSION, "Spawn Protection Version", FCVAR_SPONLY | FCVAR_REPLICATED);
 	gCvRandomHealth = CreateConVar("sm_health_value", "11", "Set how much random health is given to (i) player. (def, 14)");
 	gCvRandomHealth.AddChangeHook(OnCVarChanged);
 	gCvEnabled = CreateConVar("sm_health_enabled", "1", "Enables the random health chance. (def, 1)");
