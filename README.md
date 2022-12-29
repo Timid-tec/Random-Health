@@ -7,7 +7,8 @@
 
 ## ConVars
 - sm_random_health_version - Random Health Version
-- sm_randomhealth_rhealth - Sets how much random health is given to admins/vips (def 5
+- sm_health_value - Set how much random health is given to (i) player. (def, 14)
+- sm_health_enabled - Enables the random health chance. (def, 1)
 
 ## Updates
 
