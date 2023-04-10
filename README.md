@@ -14,4 +14,5 @@
 
 | Version | Change-Log          |
 | ------- | ------------------ |
-| 4.2.0   | Added to GitHub |
+| 4.2.1   | Fixed include folder, and other issues |
+| 4.2.0   | Added to github |
